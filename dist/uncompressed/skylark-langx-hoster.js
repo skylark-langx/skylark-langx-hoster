@@ -75,7 +75,7 @@
   factory(define,require);
 
   if (!isAmd) {
-    var skylarkjs = require("skylark-langx/skylark");
+    var skylarkjs = require("skylark-langx-ns");
 
     if (isCmd) {
       module.exports = skylarkjs;
@@ -122,6 +122,21 @@ define('skylark-langx-hoster/hoster',[
 
 	var _document = null;
 
+	Object.defineProperty(hoster,"document",function(){
+		if (!_document) {
+			var w = typeof window === 'undefined' ? require('html-element') : window;
+			_document = w.document;
+		}
+
+		return _document;
+	});
+
+	if (typeof hoster.global.CustomEvent === undefined) {
+		hoster.global.CustomEvent = function(type,props) {
+			this.type = type;
+			this.props = props;
+		};
+	}
 	Object.defineProperty(hoster,"document",function(){
 		if (!_document) {
 			var w = typeof window === 'undefined' ? require('html-element') : window;

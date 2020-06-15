@@ -43,6 +43,21 @@ define([
 		return _document;
 	});
 
+	if (typeof hoster.global.CustomEvent === undefined) {
+		hoster.global.CustomEvent = function(type,props) {
+			this.type = type;
+			this.props = props;
+		};
+	}
+	Object.defineProperty(hoster,"document",function(){
+		if (!_document) {
+			var w = typeof window === 'undefined' ? require('html-element') : window;
+			_document = w.document;
+		}
+
+		return _document;
+	});
+
 	if (hoster.isBrowser) {
 	    function uaMatch( ua ) {
 		    ua = ua.toLowerCase();
