@@ -186,14 +186,14 @@ define('skylark-langx-hoster/hoster',[
 	    }
 	}
 
-
-
+	hoster.detects = {};
 
 	return  skylark.attach("langx.hoster",hoster);
 });
-define('skylark-langx-hoster/isMobile',[
-    "./hoster"
+define('skylark-langx-hoster/detects/mobile',[
+    "../hoster"
 ],function(hoster){
+    //refer : https://github.com/kaimallea/isMobile
 
     var appleIphone = /iPhone/i;
     var appleIpod = /iPod/i;
@@ -221,7 +221,7 @@ define('skylark-langx-hoster/isMobile',[
         return function (regex) { return regex.test(userAgent); };
     }
     
-    function check(param) {
+    function detectMobile(param) {
         var nav = {
             userAgent: '',
             platform: '',
@@ -321,7 +321,18 @@ define('skylark-langx-hoster/isMobile',[
         return result;
     }
 
-    return hoster.isMobile = check();
+    return hoster.detects.mobile = detectMobile;
+});
+
+define('skylark-langx-hoster/isMobile',[
+    "./hoster",
+    "./detects/mobile"
+],function(hoster,detectMobile){
+    if (hoster.isMobile == undefined) {
+        hoster.isMobile = detectMobile();
+    }
+
+    return hoster.isMobile;
 });
 
 define('skylark-langx-hoster/main',[

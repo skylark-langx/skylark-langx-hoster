@@ -98,8 +98,7 @@ define([
 	    }
 	}
 
-
-
+	hoster.detects = {};
 
 	return  skylark.attach("langx.hoster",hoster);
 });
