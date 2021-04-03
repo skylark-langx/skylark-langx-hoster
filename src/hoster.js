@@ -49,14 +49,6 @@ define([
 			this.props = props;
 		};
 	}
-	Object.defineProperty(hoster,"document",function(){
-		if (!_document) {
-			var w = typeof window === 'undefined' ? require('html-element') : window;
-			_document = w.document;
-		}
-
-		return _document;
-	});
 
 	if (hoster.isBrowser) {
 	    function uaMatch( ua ) {
