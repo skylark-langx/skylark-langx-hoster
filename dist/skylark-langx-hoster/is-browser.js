@@ -6,4 +6,4 @@
  * @license MIT
  */
 define(["./hoster","./detects/browser"],function(r,e){return void 0==r.isBrowser&&(r.isBrowser=e()),r.isBrowser});
-//# sourceMappingURL=sourcemaps/isBrowser.js.map
+//# sourceMappingURL=sourcemaps/is-browser.js.map

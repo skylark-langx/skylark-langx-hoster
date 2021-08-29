@@ -6,4 +6,4 @@
  * @license MIT
  */
 define(["./hoster","./detects/mobile"],function(e,i){return void 0==e.isMobile&&(e.isMobile=i()),e.isMobile});
-//# sourceMappingURL=sourcemaps/isMobile.js.map
+//# sourceMappingURL=sourcemaps/is-mobile.js.map
